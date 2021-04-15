@@ -1,46 +1,24 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
 
+const useInput = (initValue) => {
+  const [value, setValue] = useState(initValue);
+  const onChange = (event) => {
+    console.log(event.target);
+  };
+  return { value, onChange };
+};
+
+// React Hooks 사용 예시
 const App = () => {
-  const [item, setItem] = useState(1);
-  const incrementItem = () => setItem(item + 1);
-  const decrementItem = () => setItem(item - 1);
+  const name = useInput("Mr.");
   return (
     <div className="App">
-      <h1>Hello {item}</h1>
-      <h2>Start Ediasdfting</h2>
-      <button onClick={incrementItem}>Increment</button>
-      <button onClick={decrementItem}>Decrement</button>
+      <h1>Hello</h1>
+      <input type="text" placeholder="name" {...name} />
     </div>
   );
 };
 
-class AppUgly extends React.Component {
-  state = {
-    item: 0,
-  };
-  render() {
-    const { item } = this.state;
-    return (
-      <div className="App">
-        <h1>Hello {item}</h1>
-        <h2>Start Ediasdftinddg</h2>
-        <button onClick={this.incrementItem}>Increment</button>
-        <button onClick={this.decrementItem}>Decrement</button>
-      </div>
-    );
-  }
-  incrementItem = () => {
-    this.setState((state) => {
-      return { item: state.item + 1 };
-    });
-  };
-  decrementItem = () => {
-    this.setState((state) => {
-      return { item: state.item - 1 };
-    });
-  };
-}
-
 const rootElement = document.getElementById("root");
-ReactDom.render(<AppUgly />, rootElement);
+ReactDom.render(<App />, rootElement);
