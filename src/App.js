@@ -5,6 +5,7 @@ import Home from "./Home";
 import Main from "./Main";
 import Context from "./Context";
 import User from "./User";
+import Counter from "./Counter";
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
           <Link to="/user">
             <button>User</button>
           </Link>
+          <Link to="/counter">
+            <button>Counter</button>
+          </Link>
         </header>
         <hr />
         <main>
@@ -35,6 +39,7 @@ const App = () => {
             <Route path="/about" component={About} />
             <Route path="/context" component={Context} />
             <Route path="/user" component={User} />
+            <Route path="/counter" component={Counter} />
           </Switch>
         </main>
       </Router>
